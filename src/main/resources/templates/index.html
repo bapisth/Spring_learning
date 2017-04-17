@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+
+
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{fragments/layout :: layout (~{this::body},'home')}">
+
+  <body>
+
+    <h2 th:text="#{welcome}">Welcome</h2>
+    
+    <div th:object="${user}">
+		<input value="" th:field="${user.name}" class="form-control"/>
+	</div>
+
+  </body>
+
+</html>
