@@ -9,7 +9,7 @@ import lombok.Data;
 @Entity
 @Table(name="users_users")
 @Data
-public class UserOfUsersEntity {
+public class UserOfUsersEntity extends  BaseEntity {
 	
 	@Column
 	private Integer user_id; //ID of the user (Indexed field)

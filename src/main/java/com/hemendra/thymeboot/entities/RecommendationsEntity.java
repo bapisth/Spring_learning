@@ -20,7 +20,7 @@ import lombok.Data;
 @Entity
 @Table(name = "recommendations")
 @Data
-public class RecommendationsEntity {
+public class RecommendationsEntity extends BaseEntity {
 	
 	@Column
 	private Integer user_id;

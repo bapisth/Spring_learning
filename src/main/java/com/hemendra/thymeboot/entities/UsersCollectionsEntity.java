@@ -14,7 +14,8 @@ import lombok.Data;
 @Entity
 @Table(name = "users_collections")
 @Data
-public class UsersCollectionsEntity { 
+public class UsersCollectionsEntity extends BaseEntity { 
+	
 	@Column
 	private Integer collection_id;//ID of the collection
 	

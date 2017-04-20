@@ -20,7 +20,7 @@ import lombok.Data;
 @Entity
 @Table(name = "analytics")
 @Data
-public class AnalyticsEntity {
+public class AnalyticsEntity extends BaseEntity {
 	
 	@Column
 	private Integer post_id; //ID of the post (Indexed field)

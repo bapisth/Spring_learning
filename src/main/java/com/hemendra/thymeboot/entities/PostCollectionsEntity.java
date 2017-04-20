@@ -14,7 +14,7 @@ import lombok.Data;
 @Entity
 @Table(name = "posts_collections")
 @Data
-public class PostCollectionsEntity {
+public class PostCollectionsEntity extends BaseEntity {
 	
 	@Column
 	private Integer collection_id; //ID of the collection this post belongs to (Indexed field)
