@@ -13,6 +13,7 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.ManyToAny;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import lombok.Data;
@@ -28,7 +29,7 @@ public class PostsEntity {
 	
 	@ManyToOne
 	@JoinColumn(name = "user_id")
-	private String user_id;
+	private UsersEntity user_id;
 	
 	@Column
 	private String image_path;
