@@ -57,5 +57,11 @@ public class UsersEntity {
     private Date date_updated; //Last time this user was updated?
 	
 	@OneToMany(mappedBy = "user_id", cascade = CascadeType.ALL)
-	private Set<PostsEntity> posts;
+	private Set<PostsEntity> posts; //One user has many posts
+	
+	@OneToMany(mappedBy = "user_id", cascade = CascadeType.ALL)
+	private Set<CollectionsEntity> collections;//One user has many collections
+	
+	@OneToMany(mappedBy = "user_id", cascade = CascadeType.ALL)
+	private Set<BookmarksEntity> bookmarks;
 }

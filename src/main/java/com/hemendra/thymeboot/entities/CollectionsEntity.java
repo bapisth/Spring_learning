@@ -4,6 +4,8 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.GenericGenerator;
@@ -20,8 +22,9 @@ public class CollectionsEntity {
 	@GenericGenerator(name = "uuid", strategy = "uuid2")
 	private Integer collection_id; //Primary ID that preferably auto increments
 	
-	@Column
-	private Integer user_id; //ID of the user who started this collection
+	@ManyToOne
+	@JoinColumn(name= "user_id")
+	private UsersEntity user_id; //ID of the user who started this collection
 	
 	@Column
 	private String image_path; //Path to image on the server for the collection
