@@ -1,6 +1,5 @@
 package com.hemendra.thymeboot.entities;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -25,7 +24,8 @@ public class BookmarksEntity {
 	@JoinColumn(name = "user_id")
 	private UsersEntity user_id; //ID of the user (Indexed field)
 	
-	@Column
+	@ManyToOne
+	@JoinColumn(name = "post_id")
 	private PostsEntity post_id; //ID of the post (Indexed field)
 	
 }

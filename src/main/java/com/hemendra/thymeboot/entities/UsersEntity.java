@@ -62,6 +62,6 @@ public class UsersEntity {
 	@OneToMany(mappedBy = "user_id", cascade = CascadeType.ALL)
 	private Set<CollectionsEntity> collections;//One user has many collections
 	
-	@OneToMany(mappedBy = "user_id", cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "user_id")
 	private Set<BookmarksEntity> bookmarks;
 }
