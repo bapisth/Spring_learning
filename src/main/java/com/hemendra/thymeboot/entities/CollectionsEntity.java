@@ -13,6 +13,8 @@ import javax.persistence.Table;
 
 import org.hibernate.annotations.GenericGenerator;
 
+import com.hemendra.thymeboot.entities.user.UsersEntity;
+
 import lombok.Data;
 
 @Entity
