@@ -4,6 +4,8 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -22,14 +24,16 @@ import lombok.Data;
 @Data
 public class RecommendationsEntity extends BaseEntity {
 	
-	@Column
-	private Integer user_id;
+	@ManyToOne
+	@JoinColumn(name = "user_id")
+	private UsersEntity userId;
 	
-	@Column
-	private Integer post_id;
+	@ManyToOne
+	@JoinColumn(name = "post_id")
+	private PostsEntity postId;
 	
-	@Column
+	@Column(name = "date_created")
 	@Temporal(TemporalType.DATE)
     @DateTimeFormat(pattern = "yyyy/MM/dd")
-    private Date date_created; //When was this post recommended?
+    private Date dateCreated; //When was this post recommended?
 }

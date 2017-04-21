@@ -22,11 +22,11 @@ import lombok.Data;
 @Data
 public class AnalyticsEntity extends BaseEntity {
 	
-	@Column
-	private Integer post_id; //ID of the post (Indexed field)
+	@Column(name = "post_id")
+	private Integer postId; //ID of the post (Indexed field)
 	
-	@Column
+	@Column(name = "date_created")
 	@Temporal(TemporalType.DATE)
     @DateTimeFormat(pattern = "yyyy/MM/dd")
-    private Date date_created; //When was this post viewed?
+    private Date dateCreated; //When was this post viewed?
 }

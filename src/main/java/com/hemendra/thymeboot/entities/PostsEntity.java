@@ -17,6 +17,8 @@ import javax.persistence.TemporalType;
 import org.hibernate.annotations.GenericGenerator;
 import org.springframework.format.annotation.DateTimeFormat;
 
+import com.hemendra.thymeboot.bookmark.BookmarksEntity;
+
 import lombok.Data;
 
 @Entity
@@ -26,14 +28,19 @@ public class PostsEntity {
 	@Id
 	@GeneratedValue
 	@GenericGenerator(name = "uuid", strategy = "uuid2")
-	private Integer post_id;
+	@Column(name = "post_id")
+	private Integer postId;
 	
 	@ManyToOne
 	@JoinColumn(name = "user_id")
-	private UsersEntity user_id;
+	private UsersEntity userId;
 	
-	@Column
-	private String image_path;
+	@ManyToOne
+	@JoinColumn(name = "collection_id")
+	private CollectionsEntity collectionId;
+	
+	@Column(name = "image_path")
+	private String imagePath;
 	
 	@Column
 	private String title;
@@ -50,16 +57,20 @@ public class PostsEntity {
 	@Column
 	private Integer views;
 	
-	@Column
+	@Column(name = "date_created")
 	@Temporal(TemporalType.DATE)
     @DateTimeFormat(pattern = "yyyy/MM/dd")
-    private Date date_created;
+    private Date dateCreated;
 	
-	@Column
+	@Column(name = "date_updated")
 	@Temporal(TemporalType.DATE)
     @DateTimeFormat(pattern = "yyyy/MM/dd")
-    private Date date_updated;
+    private Date dateUpdated;
 	
-	@OneToMany(mappedBy = "post_id")
+	@OneToMany(mappedBy = "postId")
 	private List<BookmarksEntity> bookmarks;
+	
+	@OneToMany(mappedBy = "postId")
+	private List<RecommendationsEntity> recommendations;
+	
 }

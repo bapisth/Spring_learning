@@ -16,6 +16,8 @@ import javax.persistence.TemporalType;
 import org.hibernate.annotations.GenericGenerator;
 import org.springframework.format.annotation.DateTimeFormat;
 
+import com.hemendra.thymeboot.bookmark.BookmarksEntity;
+
 import lombok.Data;
 
 @Entity
@@ -26,7 +28,8 @@ public class UsersEntity {
 	@Id
 	@GeneratedValue
 	@GenericGenerator(name = "uuid", strategy = "uuid2")
-	private Integer user_id; //Primary ID that preferably auto increments (if supported in chosen DB)
+	@Column(name = "user_id")
+	private Integer userId; //Primary ID that preferably auto increments (if supported in chosen DB)
 	
 	@Column
 	private String username; //Username (Unique Index)
@@ -34,34 +37,37 @@ public class UsersEntity {
 	@Column 
 	private String email; //Email address (Unique Index)
 	
-	@Column
-	private String salted_password; //Salted password digest
+	@Column(name = "salted_password")
+	private String saltedPassword; //Salted password digest
 	
-	@Column
-	private String first_name; //First name of user
+	@Column(name = "first_name")
+	private String firstName; //First name of user
 
-	@Column
-	private String last_name; //Last name of user
+	@Column(name = "last_name")
+	private String lastName; //Last name of user
 	
-	@Column
-	private String last_ip; // Last known user IP address
+	@Column(name = "last_ip")
+	private String lastIp; // Last known user IP address
 	
-	@Column
+	@Column(name = "date_created")
 	@Temporal(TemporalType.DATE)
     @DateTimeFormat(pattern = "yyyy/MM/dd")
-    private Date date_created; //When did this user sign up?
+    private Date dateCreated; //When did this user sign up?
 	
-	@Column
+	@Column(name = "date_updated")
 	@Temporal(TemporalType.DATE)
     @DateTimeFormat(pattern = "yyyy/MM/dd")
-    private Date date_updated; //Last time this user was updated?
+    private Date dateUpdated; //Last time this user was updated?
 	
-	@OneToMany(mappedBy = "user_id", cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "userId", cascade = CascadeType.ALL)
 	private Set<PostsEntity> posts; //One user has many posts
 	
-	@OneToMany(mappedBy = "user_id", cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "userId", cascade = CascadeType.ALL)
 	private Set<CollectionsEntity> collections;//One user has many collections
 	
-	@OneToMany(mappedBy = "user_id")
+	@OneToMany(mappedBy = "userId")
 	private Set<BookmarksEntity> bookmarks;
+	
+	@OneToMany(mappedBy = "userId")
+	private Set<RecommendationsEntity> recommendations;
 }

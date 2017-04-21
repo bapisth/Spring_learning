@@ -1,11 +1,14 @@
 package com.hemendra.thymeboot.entities;
 
+import java.util.Set;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.GenericGenerator;
@@ -20,16 +23,17 @@ public class CollectionsEntity {
 	@Id
 	@GeneratedValue
 	@GenericGenerator(name = "uuid", strategy = "uuid2")
-	private Integer collection_id; //Primary ID that preferably auto increments
+	@Column(name = "collection_id")
+	private Integer collectionId; //Primary ID that preferably auto increments
 	
 	@ManyToOne
 	@JoinColumn(name= "user_id")
-	private UsersEntity user_id; //ID of the user who started this collection
+	private UsersEntity userId; //ID of the user who started this collection
 	
-	@Column
-	private String image_path; //Path to image on the server for the collection
+	@Column(name = "image_path")
+	private String imagePath; //Path to image on the server for the collection
 	
-	@Column
+	@Column(name = "name")
 	private String name; //Name of the collection
 	
 	@Column
@@ -40,4 +44,7 @@ public class CollectionsEntity {
 	
 	@Column
 	private Integer followers; //Number of follows watching this collection
+	
+	@OneToMany(mappedBy = "collectionId")
+	private Set<PostsEntity> postsEntities;
 }

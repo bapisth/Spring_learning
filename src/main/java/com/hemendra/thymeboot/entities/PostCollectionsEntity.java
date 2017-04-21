@@ -1,7 +1,8 @@
 package com.hemendra.thymeboot.entities;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import lombok.Data;
@@ -16,9 +17,11 @@ import lombok.Data;
 @Data
 public class PostCollectionsEntity extends BaseEntity {
 	
-	@Column
-	private Integer collection_id; //ID of the collection this post belongs to (Indexed field)
+	@ManyToOne
+	@JoinColumn(name = "collection_id")
+	private CollectionsEntity collectionId; //ID of the collection this post belongs to (Indexed field)
 	
-	@Column
-	private Integer post_id; //ID of the post (Indexed field)
+	@ManyToOne
+	@JoinColumn(name = "post_id")
+	private PostsEntity postId; //ID of the post (Indexed field)
 }
