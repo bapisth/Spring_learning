@@ -12,6 +12,7 @@ import javax.persistence.TemporalType;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
+import com.hemendra.thymeboot.entities.posts.PostsEntity;
 import com.hemendra.thymeboot.entities.user.UsersEntity;
 
 import lombok.Data;

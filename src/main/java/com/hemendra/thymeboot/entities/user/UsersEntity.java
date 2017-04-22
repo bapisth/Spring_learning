@@ -18,8 +18,8 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import com.hemendra.thymeboot.bookmark.BookmarksEntity;
 import com.hemendra.thymeboot.entities.CollectionsEntity;
-import com.hemendra.thymeboot.entities.PostsEntity;
 import com.hemendra.thymeboot.entities.RecommendationsEntity;
+import com.hemendra.thymeboot.entities.posts.PostsEntity;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

@@ -4,10 +4,10 @@ import java.util.List;
 
 import javax.transaction.Transactional;
 
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Repository;
 
 @Transactional
-@Service
+@Repository
 public interface UsersDao {
 	void add(UsersEntity usersEntity);
 	void update(UsersEntity usersEntity);

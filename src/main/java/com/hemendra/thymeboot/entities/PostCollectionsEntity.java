@@ -5,6 +5,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.hemendra.thymeboot.entities.posts.PostsEntity;
+
 import lombok.Data;
 /**
  * A table for holding posts assigned to a particular collection

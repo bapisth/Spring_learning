@@ -1,4 +1,4 @@
-package com.hemendra.thymeboot.entities;
+package com.hemendra.thymeboot.entities.posts;
 
 import java.util.Date;
 import java.util.List;
@@ -18,14 +18,32 @@ import org.hibernate.annotations.GenericGenerator;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import com.hemendra.thymeboot.bookmark.BookmarksEntity;
+import com.hemendra.thymeboot.entities.CollectionsEntity;
+import com.hemendra.thymeboot.entities.RecommendationsEntity;
 import com.hemendra.thymeboot.entities.user.UsersEntity;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Entity
 @Table(name = "posts")
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class PostsEntity {
+	public PostsEntity(PostsDto postsDto) {
+		this.postId = postsDto.getPostId();
+		this.imagePath = postsDto.getImagePath();
+		this.title = postsDto.getTitle();
+		this.subtitle = postsDto.getSubtitle();
+		this.text = postsDto.getText();
+		this.status = postsDto.getStatus();
+		this.views = postsDto.getViews();
+		this.dateCreated = postsDto.getDateCreated();
+		this.dateUpdated = postsDto.getDateUpdated();
+	}
+
 	@Id
 	@GeneratedValue
 	@GenericGenerator(name = "uuid", strategy = "uuid2")
